@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
+        "use strict";  //Used to strict the writing of code
         // variables declaring key words : var,let,const
         // let a = 24;
         // let a =3456;
@@ -48,12 +49,43 @@
 
         console.log("This is reverse Array");
         let ar = [];
-        len = arr.length;
+        let len = arr.length;
         console.log(len)
-        if (i=0,i<len,i++){
-            ar[i] = arr.reverse[i];
-            console.log(ar);
+        ar = arr.reverse();
+        console.log(ar);
+        ar.forEach(element => {
+            console.log(element);
+        });
+
+        let arrr = [2344,54,35,6,5];
+        console.log(this);
+        let mob = {
+            aer: 23,
+            qw: this,
+            myfunct: (number) => {  //arrow function m "this" qw ka "this" hoga , arrow function m andar hi andar hi processing krta rehta h bhar nhi jata 
+                console.log(this);
+            }
         }
+
+        let arrr1 = [2344,54,35,6,5];
+        console.log(this);
+        let mob1 = {
+            aer1: 23,
+            qw1: this,
+            myfunct: function (number) {  //yha pe function likha h toh "this" m function ka hi object ayyega mtlb mob1 ka object aayega isme, function m bhar ka utha leta h mtlb jis k andar hai function usse hi le leta aur ussi ki tarah show hota h, mtlb bhar bhi ka bhi process kr skta h kisi object k andar reh kar bhi
+                console.log(this);
+            }
+        }
+        // call backs
+        setTimeout(() => {
+            console.log("Yayyyy")
+        }, 3000);
+        console.log("Done!!")
+
+        // for (let i=0;i<len;i++){
+        //     // console.log(i)
+           
+        // };
         // ar = arr.reverse;
         // ar.forEach(element =>{
         //     console.log(element);
