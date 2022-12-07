@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 let name = "Aman22";
