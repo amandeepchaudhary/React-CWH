@@ -65,8 +65,8 @@ export default function TextForm(props) {
         // upper2();
         setText(new3);
     }
-    const handleClear = ()=>{
-        let new4 ="";
+    const handleClear = () => {
+        let new4 = "";
         setText(new4);
     }
     const onChange = (event) => {
@@ -76,27 +76,56 @@ export default function TextForm(props) {
     const [text, setText] = useState("");  //Text name ki ek state variable maine set ki h jiski default value "Enter text here" hai, aur jab bhi mujhe text ko update krna hoga toh m setText se krunga, React mai text = "sdkfkdjskjf" aise nhi change hota na hi update hota h, hume function ki help se update and change krna padta h, setText("skdsndkjs") <<<--- Like This.  
     // text = "new Text";  //Aise nhi
     // setText("This is the new Text");
+    const [darkMode, setDarkMode] = useState({
+        color: 'black',
+        backgroundColor: 'white'
+    })
+
+    const [changeN, setChangeN] = useState("Dark Mode")
+
+    const darkM = () => {
+        if (darkMode.color === 'black') {
+            setDarkMode({
+                color: 'white',
+                backgroundColor: 'black'
+            })
+            setChangeN("Light Mode")
+        }
+        else {
+            setDarkMode({
+                color: 'black',
+                backgroundColor: 'white'
+            })
+            setChangeN("Dark Mode")
+        }
+    }
+
     return (
         <>
-            <div className="container">
-                <h1>{props.heading}</h1>
-                <div className="mb-3">
-                    <textarea className="form-control" value={text} onChange={onChange} id="mybox" rows="10"></textarea>
-                    <button type="button" className="btn btn-primary my-4" onClick={handleUpClick} data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="<em>Upper</em> <u>case</u> <b>HTML</b>">Convert to Upper case</button>
-                    <button className="btn btn-primary my-4 mx-1" onClick={handleMediumClick}>Convert to Sentence</button>
-                    <button className="btn btn-primary my-4 mx-1" onClick={handleLowClick}>Convert to Lower case</button>
-                    <button className="btn btn-primary my-4 mx-1" onClick={handleClear}>Clear Text</button>
+            <div style={darkMode}>
+                <div className="container">
+                    <h1>{props.heading}</h1>
+                    <div className="mb-3">
+                        <textarea className="form-control" value={text} onChange={onChange} id="mybox" rows="10"></textarea>
+                        <button type="button" className="btn btn-primary my-4" onClick={handleUpClick} data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="<em>Upper</em> <u>case</u> <b>HTML</b>">Convert to Upper case</button>
+                        <button className="btn btn-primary my-4 mx-1" onClick={handleMediumClick}>Convert to Sentence</button>
+                        <button className="btn btn-primary my-4 mx-1" onClick={handleLowClick}>Convert to Lower case</button>
+                        <button className="btn btn-primary my-4 mx-1" onClick={handleClear}>Clear Text</button>
+                        <button className="btn btn-primary my-4 mx-1" onClick={darkM}>{changeN}</button>
+                    </div>
                 </div>
-            </div>
-            <div className="container my-3">
-                <h2>Summary</h2>
-                <p>
-                    {text.length} Characters, {text.split(" ").length} words and {text.split(".").length - 1} Sentences <br />
-                    {0.008 * text.split(" ").length} Minutes Read
-                </p>
-                <h2>Preview</h2>
-                {text}
-                {/* text.split(" ") will give us an array with different words seprated with a " " */}
+                <div className="container my-3">
+                    <h2>Summary</h2>
+                    <p>
+                        {text.length} Characters, {text.split(" ").length} words and {text.split(".").length - 1} Sentences <br />
+                        {0.008 * text.split(" ").length} Minutes Read
+                    </p>
+                    <h2>Preview</h2>
+                    <code>{text}</code><br />
+                    {text}
+                    {/* text.split(" ") will give us an array with different words seprated with a " " */}
+                    <p> <br /></p>
+                </div>
             </div>
         </>
     )
