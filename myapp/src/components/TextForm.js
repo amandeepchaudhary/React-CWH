@@ -78,13 +78,13 @@ export default function TextForm(props) {
     // setText("This is the new Text");
     const [darkMode, setDarkMode] = useState({
         color: 'black',
-        backgroundColor: 'white'
+        backgroundColor: `${props.col}`
     })
 
     const [changeN, setChangeN] = useState("Dark Mode")
 
     const darkM = () => {
-        if (darkMode.color === 'black') {
+        if (darkMode.backgroundColor === 'white') {
             setDarkMode({
                 color: 'white',
                 backgroundColor: 'black'
