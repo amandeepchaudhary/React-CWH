@@ -13,11 +13,13 @@ function App() {
     if(mode==="light"){
       setMode("dark");
       document.body.style.backgroundColor = 'black';
+      document.body.style.color = 'white'
       setDma("black");
     }
     else{
       setMode("light")
       document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black'
       setDma("white");
     }
   }
@@ -27,8 +29,8 @@ function App() {
       {/* <Navbar/> */}
       <Navbar title="TextUtiles" mode={mode} enable={dm}/>
       <div className="container my-3">
-        <TextForm heading="Enter your text here"/>
-        <About enable={dm} col={dma}/>
+        <TextForm heading="Enter your text here" mode={mode}/>
+        <About mode={mode} enable={dm} col={dma}/>
       </div>
     </>
   );
