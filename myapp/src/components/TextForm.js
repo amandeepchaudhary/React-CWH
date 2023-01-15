@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useState } from 'react'
 
 export default function TextForm(props) {
     const handleUpClick = () => {
@@ -76,33 +77,35 @@ export default function TextForm(props) {
     const [text, setText] = useState("");  //Text name ki ek state variable maine set ki h jiski default value "Enter text here" hai, aur jab bhi mujhe text ko update krna hoga toh m setText se krunga, React mai text = "sdkfkdjskjf" aise nhi change hota na hi update hota h, hume function ki help se update and change krna padta h, setText("skdsndkjs") <<<--- Like This.  
     // text = "new Text";  //Aise nhi
     // setText("This is the new Text");
-    const [darkMode, setDarkMode] = useState({
-        color: 'black',
-        backgroundColor: `${props.col}`
-    })
 
-    const [changeN, setChangeN] = useState("Dark Mode")
 
-    const darkM = () => {
-        if (darkMode.backgroundColor === 'white') {
-            setDarkMode({
-                color: 'white',
-                backgroundColor: 'black'
-            })
-            setChangeN("Light Mode")
-        }
-        else {
-            setDarkMode({
-                color: 'black',
-                backgroundColor: 'white'
-            })
-            setChangeN("Dark Mode")
-        }
-    }
+    // const [darkMode, setDarkMode] = useState({
+    //     color: 'black',
+    //     backgroundColor: `${props.col}`
+    // })
+
+    // const [changeN, setChangeN] = useState("Dark Mode")
+
+    // const darkM = () => {
+    //     if (darkMode.backgroundColor === 'white') {
+    //         setDarkMode({
+    //             color: 'white',
+    //             backgroundColor: 'black'
+    //         })
+    //         setChangeN("Light Mode")
+    //     }
+    //     else {
+    //         setDarkMode({
+    //             color: 'black',
+    //             backgroundColor: 'white'
+    //         })
+    //         setChangeN("Dark Mode")
+    //     }
+    // }
 
     return (
         <>
-            <div style={darkMode}>
+            <div style={{backgroundColor: props.mode==='light'?'white':'black'}}>
                 <div className="container">
                     <h1>{props.heading}</h1>
                     <div className="mb-3">
@@ -111,7 +114,7 @@ export default function TextForm(props) {
                         <button className="btn btn-primary my-4 mx-1" onClick={handleMediumClick}>Convert to Sentence</button>
                         <button className="btn btn-primary my-4 mx-1" onClick={handleLowClick}>Convert to Lower case</button>
                         <button className="btn btn-primary my-4 mx-1" onClick={handleClear}>Clear Text</button>
-                        <button className="btn btn-primary my-4 mx-1" onClick={darkM}>{changeN}</button>
+                        {/* <button className="btn btn-primary my-4 mx-1" onClick={darkM}>{changeN}</button> */}
                     </div>
                 </div>
                 <div className="container my-3">
